@@ -48,7 +48,7 @@ export function Process() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="proceso" ref={ref} className="py-24 bg-[#0A1628] overflow-hidden relative">
+    <section id="proceso" ref={ref} className="py-16 md:py-24 bg-[#0A1628] overflow-hidden relative">
       {/* Background decorations */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
       <div className="absolute top-1/3 left-0 w-64 h-64 rounded-full bg-[#F5A623]/5 blur-[80px]" />
@@ -60,12 +60,12 @@ export function Process() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-white/8 border border-white/15 text-sm font-semibold text-[#F5A623] mb-4">
             El proceso completo
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
             De cero a{' '}
             <span className="gradient-text">energía solar</span>
             <br />
@@ -92,7 +92,7 @@ export function Process() {
                   initial={{ opacity: 0, x: isRight ? 40 : -40 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                  className={`relative flex items-start gap-6 pb-12 ${
+                  className={`relative flex items-start gap-6 pb-8 md:pb-12 ${
                     isRight ? 'lg:flex-row-reverse' : 'lg:flex-row'
                   } flex-row`}
                 >

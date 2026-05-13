@@ -61,7 +61,7 @@ export function Stats() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0A6EBD]/20 to-transparent" />
 
       <Container>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-4">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -81,7 +81,7 @@ export function Stats() {
               />
 
               <div
-                className="text-4xl sm:text-5xl font-black mb-2 tabular-nums"
+                className="text-3xl sm:text-5xl font-black mb-2 tabular-nums"
                 style={{ color: stat.color }}
               >
                 <CountUp

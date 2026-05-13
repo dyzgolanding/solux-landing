@@ -216,7 +216,7 @@ export function Hero() {
 
             {/* Headline */}
             <div className="animate-hero-2">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight">
                 Tu techo,{' '}
                 <span className="relative">
                   <span className="gradient-text">tu energía</span>
@@ -252,10 +252,10 @@ export function Hero() {
             </p>
 
             {/* CTAs */}
-            <div className="animate-hero-4 flex flex-col sm:flex-row gap-4">
+            <div className="animate-hero-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href="https://cotiza.soluxenergy.cl"
-                className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-bold text-lg shadow-2xl hover:shadow-[0_0_40px_rgba(245,166,35,0.45)] transition-all duration-300 hover:scale-105 active:scale-95"
+                className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-bold text-base sm:text-lg shadow-2xl hover:shadow-[0_0_40px_rgba(245,166,35,0.45)] transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 <Zap className="w-5 h-5" strokeWidth={2.5} />
                 Cotiza gratis — 2 minutos
@@ -264,7 +264,7 @@ export function Hero() {
 
               <a
                 href="#como-funciona"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl border border-white/20 text-white font-semibold text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl border border-white/20 text-white font-semibold text-base sm:text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300"
               >
                 ¿Cómo funciona?
               </a>

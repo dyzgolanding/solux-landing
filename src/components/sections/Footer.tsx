@@ -52,8 +52,8 @@ export function Footer() {
     <footer className="bg-[#060E1A] text-white">
       {/* Top section */}
       <div className="border-b border-white/8">
-        <Container className="py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <Container className="py-10 lg:py-14">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
             {/* Brand column */}
             <div className="lg:col-span-2">
               {/* Logo */}

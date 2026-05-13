@@ -56,19 +56,19 @@ export function Benefits() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="beneficios" ref={ref} className="py-24 bg-[#F8FAFC] overflow-hidden">
+    <section id="beneficios" ref={ref} className="py-16 md:py-24 bg-[#F8FAFC] overflow-hidden">
       <Container>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-[#22C55E] mb-4">
             ¿Por qué SOLUX?
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
             Todo lo que necesitas,{' '}
             <span className="gradient-text-blue">sin complicaciones</span>
           </h2>
@@ -90,7 +90,7 @@ export function Benefits() {
               >
                 <TiltCard
                   intensity={8}
-                  className="group relative bg-white rounded-3xl p-7 border border-slate-100 hover:border-transparent hover:shadow-2xl transition-all duration-400 overflow-hidden h-full"
+                  className="group relative bg-white rounded-3xl p-5 sm:p-7 border border-slate-100 hover:border-transparent hover:shadow-2xl transition-all duration-400 overflow-hidden h-full"
                 >
                   {/* Hover gradient background */}
                   <div

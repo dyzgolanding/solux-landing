@@ -43,19 +43,19 @@ export function HowItWorks() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="como-funciona" ref={ref} className="py-24 bg-white overflow-hidden">
+    <section id="como-funciona" ref={ref} className="py-16 md:py-24 bg-white overflow-hidden">
       <Container>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#F8FAFC] border border-slate-200 text-sm font-semibold text-[#0A6EBD] mb-4">
             Así de simple
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
             Tres pasos para{' '}
             <span className="gradient-text">empezar a ahorrar</span>
           </h2>
@@ -65,7 +65,7 @@ export function HowItWorks() {
         </motion.div>
 
         {/* Steps */}
-        <div className="relative grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="relative grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           {/* Connecting line */}
           <motion.div
             className="hidden md:block absolute top-12 left-1/4 right-1/4 h-px bg-gradient-to-r from-[#F5A623]/40 via-[#0A6EBD]/40 to-[#22C55E]/40"
@@ -88,10 +88,10 @@ export function HowItWorks() {
                 {/* Icon circle */}
                 <div className="relative mb-6">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center mb-2 group-hover:scale-110 transition-transform duration-300 shadow-lg"
+                    className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mb-2 group-hover:scale-110 transition-transform duration-300 shadow-lg"
                     style={{ backgroundColor: step.bg, border: `2px solid ${step.border}` }}
                   >
-                    <Icon className="w-9 h-9" style={{ color: step.color }} strokeWidth={1.5} />
+                    <Icon className="w-7 h-7 md:w-9 md:h-9" style={{ color: step.color }} strokeWidth={1.5} />
                   </div>
                   {/* Step number bubble */}
                   <div

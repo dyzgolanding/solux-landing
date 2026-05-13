@@ -41,16 +41,16 @@ export function CTA() {
             Cotización 100% gratuita, sin compromisos
           </div>
 
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
             Empieza a ahorrar
             <br />
             <span className="gradient-text">desde hoy</span>
           </h2>
 
-          <p className="text-xl text-white/50 mb-10 max-w-lg mx-auto">
+          <p className="text-base sm:text-xl text-white/50 mb-10 max-w-lg mx-auto">
             Miles de hogares en Chile ya se benefician de la energía solar.
             <br />
-            <span className="text-white/70">¿Por qué esperarr?</span>
+            <span className="text-white/70">¿Por qué esperar?</span>
           </p>
 
           {/* CTAs */}
@@ -59,7 +59,7 @@ export function CTA() {
               href="https://cotiza.soluxenergy.cl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-black text-xl shadow-2xl hover:shadow-[0_0_50px_rgba(245,166,35,0.5)] transition-shadow duration-300"
+              className="inline-flex items-center gap-3 px-7 py-4 sm:px-10 sm:py-5 rounded-2xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-black text-lg sm:text-xl shadow-2xl hover:shadow-[0_0_50px_rgba(245,166,35,0.5)] transition-shadow duration-300"
             >
               <Zap className="w-6 h-6" strokeWidth={2.5} />
               Cotiza gratis ahora
@@ -69,7 +69,7 @@ export function CTA() {
               href="https://wa.me/56934015468?text=Hola%20SOLUX%20Energy%2C%20quiero%20información%20sobre%20paneles%20solares"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-5 rounded-2xl border border-white/20 text-white font-semibold text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300"
+              className="inline-flex items-center gap-3 px-6 py-4 sm:px-8 sm:py-5 rounded-2xl border border-white/20 text-white font-semibold text-base sm:text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300"
             >
               <Phone className="w-5 h-5" />
               Habla con un asesor

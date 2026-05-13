@@ -132,7 +132,7 @@ export function ScrollCarousel() {
           return (
             <div
               key={card.number}
-              className="flex-shrink-0 relative bg-white/5 border border-white/10 rounded-3xl p-8 overflow-hidden"
+              className="flex-shrink-0 relative bg-white/5 border border-white/10 rounded-3xl p-5 sm:p-8 overflow-hidden"
               style={{ width: CARD_WIDTH }}
             >
               {/* Background number */}
@@ -162,7 +162,7 @@ export function ScrollCarousel() {
 
                 {/* Stat */}
                 <div>
-                  <p className="text-5xl font-black leading-none" style={{ color: card.color }}>
+                  <p className="text-4xl sm:text-5xl font-black leading-none" style={{ color: card.color }}>
                     {card.stat}
                   </p>
                   <p className="text-white/35 text-xs mt-1">{card.statLabel}</p>

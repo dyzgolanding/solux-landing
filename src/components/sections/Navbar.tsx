@@ -45,7 +45,7 @@ export function Navbar() {
                 alt="SOLUX ENERGY"
                 width={500}
                 height={500}
-                className="h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-10 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
                 priority
                 unoptimized
               />

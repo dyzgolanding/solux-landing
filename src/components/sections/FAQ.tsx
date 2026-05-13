@@ -120,19 +120,19 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section id="faq" ref={ref} className="py-24 bg-[#F8FAFC] overflow-hidden">
+    <section id="faq" ref={ref} className="py-16 md:py-24 bg-[#F8FAFC] overflow-hidden">
       <Container size="md">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-[#0A6EBD] mb-4">
             Preguntas frecuentes
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
             ¿Tienes dudas?{' '}
             <span className="gradient-text">Las respondemos</span>
           </h2>
