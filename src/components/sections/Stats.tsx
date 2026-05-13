@@ -87,7 +87,6 @@ export function Stats() {
                 <CountUp
                   target={stat.value}
                   suffix={stat.suffix}
-                  decimals={stat.decimals}
                   started={isInView}
                 />
               </div>
