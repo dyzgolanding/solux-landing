@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+// Header uses CSS animation (.animate-navbar) to appear without waiting for JS
 import { Menu, X, Zap } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
@@ -27,15 +28,12 @@ export function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+      <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          'animate-navbar fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           scrolled
             ? 'bg-[#0A1628]/95 backdrop-blur-xl border-b border-white/10 shadow-2xl'
-            : 'bg-transparent'
+            : 'bg-[#0A1628]/80 backdrop-blur-xl border-b border-white/10 lg:bg-transparent lg:backdrop-blur-none lg:border-transparent'
         )}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -95,7 +93,7 @@ export function Navbar() {
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile Menu */}
       <AnimatePresence>

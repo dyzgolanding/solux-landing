@@ -16,7 +16,7 @@ const testimonials = [
     color: '#F5A623',
   },
   {
-    name: 'Emilio Simerda',
+    name: 'Juan Cortéz', 
     location: 'Chile, Kennedy',
     initials: 'ES',
     rating: 5,

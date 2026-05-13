@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
+// Left column uses CSS animations (globals.css) to show content before JS loads
 import { useRef } from 'react'
 import { Zap, ChevronDown, Shield, Star, Clock } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -204,22 +205,17 @@ export function Hero() {
       <Container className="relative z-10 flex-1 flex flex-col justify-center pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100vh-8rem)]">
           {/* Left column — content */}
-          <motion.div
-            variants={stagger}
-            initial="initial"
-            animate="animate"
-            className="flex flex-col gap-6"
-          >
+          <div className="flex flex-col gap-6">
             {/* Badge */}
-            <motion.div variants={fadeUp} className="flex items-center">
+            <div className="flex items-center animate-hero-1">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/8 border border-white/15 text-sm font-medium text-white/80 backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
-                🇨🇱 Líderes en energía solar residencial en Chile
+                🇨🇱 Empresa chilena de energía solar residencial
               </span>
-            </motion.div>
+            </div>
 
             {/* Headline */}
-            <motion.div variants={fadeUp}>
+            <div className="animate-hero-2">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight">
                 Tu techo,{' '}
                 <span className="relative">
@@ -246,20 +242,17 @@ export function Hero() {
                 <br />
                 <span className="text-white/90">sin complicaciones.</span>
               </h1>
-            </motion.div>
+            </div>
 
             {/* Subtext */}
-            <motion.p
-              variants={fadeUp}
-              className="text-lg sm:text-xl text-white/60 leading-relaxed max-w-lg"
-            >
-              Instalamos paneles solares en tu hogar con tecnología de punta.{' '}
-              <span className="text-white/80 font-medium">Ahorra en tu cuenta de luz desde el primer mes</span>{' '}
-              de instalación.
-            </motion.p>
+            <p className="animate-hero-3 text-lg sm:text-xl text-white/60 leading-relaxed max-w-lg">
+              Empresa chilena especializada en energía solar residencial. Trabajamos con{' '}
+              <span className="text-white/80 font-medium">productos premium seleccionados por su calidad y durabilidad</span>,{' '}
+              evaluando cada vivienda de forma personalizada para ofrecerte la mejor solución.
+            </p>
 
             {/* CTAs */}
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
+            <div className="animate-hero-4 flex flex-col sm:flex-row gap-4">
               <a
                 href="https://cotiza.soluxenergy.cl"
                 className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-bold text-lg shadow-2xl hover:shadow-[0_0_40px_rgba(245,166,35,0.45)] transition-all duration-300 hover:scale-105 active:scale-95"
@@ -275,13 +268,10 @@ export function Hero() {
               >
                 ¿Cómo funciona?
               </a>
-            </motion.div>
+            </div>
 
             {/* Trust indicators */}
-            <motion.div
-              variants={fadeUp}
-              className="flex flex-wrap items-center gap-6 pt-2"
-            >
+            <div className="animate-hero-5 flex flex-wrap items-center gap-6 pt-2">
               <div className="flex items-center gap-2 text-sm text-white/50">
                 <Shield className="w-4 h-4 text-[#22C55E]" />
                 Garantía 25 años
@@ -294,8 +284,8 @@ export function Hero() {
                 <Clock className="w-4 h-4 text-[#60B4F7]" />
                 Cotización en 2 min
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Right column — illustration */}
           <motion.div

@@ -32,6 +32,23 @@
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 }
 
+/* Above-fold CSS animations — run immediately without JS */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes navbar-slide-down {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-navbar  { animation: navbar-slide-down 0.55s ease forwards; }
+.animate-hero-1  { animation: hero-fade-up 0.7s ease both; }
+.animate-hero-2  { animation: hero-fade-up 0.7s ease 0.12s both; }
+.animate-hero-3  { animation: hero-fade-up 0.7s ease 0.24s both; }
+.animate-hero-4  { animation: hero-fade-up 0.7s ease 0.36s both; }
+.animate-hero-5  { animation: hero-fade-up 0.7s ease 0.48s both; }
+
 /* Custom keyframes */
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }

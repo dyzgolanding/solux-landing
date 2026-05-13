@@ -5,10 +5,10 @@ import { motion, useInView } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 
 const stats = [
-  { value: 500, suffix: '+', label: 'Clientes felices', color: '#F5A623', description: 'Hogares transformados' },
-  { value: 2.5, suffix: ' MW', label: 'Capacidad instalada', color: '#60B4F7', description: 'De energía limpia', decimals: 1 },
-  { value: 30, suffix: '+', label: 'Ciudades en Chile', color: '#22C55E', description: 'A lo largo del país' },
-  { value: 65, suffix: '%', label: 'Ahorro promedio', color: '#FBBF24', description: 'En cuenta de luz' },
+  { value: 65, suffix: '%', label: 'Ahorro promedio', color: '#F5A623', description: 'En cuenta de luz' },
+  { value: 25, suffix: ' años', label: 'Garantía de rendimiento', color: '#60B4F7', description: 'En paneles incluida' },
+  { value: 100, suffix: '%', label: 'Trámites SEC', color: '#22C55E', description: 'Gestionados por nosotros' },
+  { value: 12, suffix: ' años', label: 'Garantía de equipos', color: '#FBBF24', description: 'Inversores y componentes' },
 ]
 
 function CountUp({
@@ -114,7 +114,7 @@ export function Stats() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center text-xs text-[#94A3B8] mt-8"
         >
-          * Datos actualizados a 2024. Energía solar residencial en todo Chile.
+          * Garantías según fabricantes líderes con los que trabajamos. Ahorro estimado según consumo promedio del hogar.
         </motion.p>
       </Container>
     </section>

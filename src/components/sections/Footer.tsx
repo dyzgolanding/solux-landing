@@ -69,7 +69,7 @@ export function Footer() {
               </div>
 
               <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-xs">
-                Transformamos hogares chilenos en productores de energía limpia. Tecnología solar de primer nivel, instalación profesional y acompañamiento total.
+                Empresa chilena especializada en energía solar residencial. Productos premium, evaluación personalizada y acompañamiento en todo el proceso: desde la cotización hasta la puesta en marcha.
               </p>
 
               {/* Contact */}
