@@ -50,7 +50,7 @@ export function CTA() {
           <p className="text-xl text-white/50 mb-10 max-w-lg mx-auto">
             Miles de hogares en Chile ya se benefician de la energía solar.
             <br />
-            <span className="text-white/70">¿Por qué esperar?</span>
+            <span className="text-white/70">¿Por qué esperarr?</span>
           </p>
 
           {/* CTAs */}
