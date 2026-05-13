@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import { Navbar } from '@/components/sections/Navbar'
 import { Hero } from '@/components/sections/Hero'
 import { Stats } from '@/components/sections/Stats'
+import { IntroAnimation } from '@/components/ui/IntroAnimation'
 
 const ScrollCarousel = dynamic(() => import('@/components/sections/ScrollCarousel').then(m => ({ default: m.ScrollCarousel })))
 const HowItWorks    = dynamic(() => import('@/components/sections/HowItWorks').then(m => ({ default: m.HowItWorks })))
@@ -14,6 +15,7 @@ const Footer        = dynamic(() => import('@/components/sections/Footer').then(
 export default function Home() {
   return (
     <>
+      <IntroAnimation />
       <Navbar />
       <main>
         <Hero />
