@@ -12,7 +12,7 @@ export function CTA() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} className="py-24 relative overflow-hidden bg-[#0A1628]">
+    <section ref={ref} className="py-14 sm:py-24 relative overflow-hidden bg-[#0A1628]">
       {/* Background photo */}
       <div className="absolute inset-0">
         <Image
@@ -93,7 +93,7 @@ export function CTA() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex flex-wrap items-center justify-center gap-6 mt-10 text-sm text-white/40"
+            className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-8 sm:mt-10 text-xs sm:text-sm text-white/40"
           >
             {[
               '✓ Sin inversión inicial',

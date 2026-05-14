@@ -72,7 +72,7 @@ export function PhotoGallery() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.55, delay: i * 0.07 }}
-              className="relative h-44 rounded-2xl overflow-hidden group"
+              className="relative h-36 rounded-2xl overflow-hidden group"
             >
               <Image
                 src={photo.src}

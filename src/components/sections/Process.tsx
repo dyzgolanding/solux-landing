@@ -151,7 +151,7 @@ export function Process() {
         </div>
 
         {/* Installation photo strip */}
-        <div className="grid grid-cols-3 gap-3 md:gap-4 mt-14 md:mt-20">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mt-10 md:mt-20">
           {[
             { src: '/images/estructura-metalica-2.jpeg', alt: 'Estructura metálica en instalación', label: 'Estructura metálica' },
             { src: '/images/instalacion-carport-paneles.jpeg', alt: 'Instalación de paneles en carport', label: 'Instalación completa' },
@@ -162,7 +162,7 @@ export function Process() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.7 + i * 0.1 }}
-              className="relative h-36 md:h-52 rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 group"
+              className="relative h-24 sm:h-36 md:h-52 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 group"
             >
               <Image
                 src={photo.src}

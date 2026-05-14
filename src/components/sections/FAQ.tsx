@@ -75,7 +75,7 @@ function FAQItem({
     >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+        className="w-full flex items-center justify-between gap-4 px-4 py-4 sm:px-6 sm:py-5 text-left"
       >
         <span
           className={`font-semibold text-base transition-colors duration-300 ${
@@ -105,7 +105,7 @@ function FAQItem({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="px-6 pb-6">
+            <div className="px-4 pb-4 sm:px-6 sm:pb-6">
               <p className="text-white/60 leading-relaxed text-sm sm:text-base">{answer}</p>
             </div>
           </motion.div>

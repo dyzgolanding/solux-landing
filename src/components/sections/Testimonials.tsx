@@ -72,7 +72,7 @@ export function Testimonials() {
   const next = () => setActive((a) => (a === testimonials.length - 1 ? 0 : a + 1))
 
   return (
-    <section id="testimonios" ref={ref} className="py-24 bg-white overflow-hidden">
+    <section id="testimonios" ref={ref} className="py-14 sm:py-24 bg-white overflow-hidden">
       <Container>
         {/* Header */}
         <motion.div
@@ -106,7 +106,7 @@ export function Testimonials() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="relative max-w-3xl mx-auto"
         >
-          <div className="relative bg-[#F8FAFC] rounded-3xl p-8 sm:p-10 border border-slate-100 overflow-hidden">
+          <div className="relative bg-[#F8FAFC] rounded-3xl p-5 sm:p-8 border border-slate-100 overflow-hidden">
             <Quote className="absolute top-6 right-8 w-16 h-16 opacity-5" style={{ color: testimonials[active].color }} />
 
             <AnimatePresence mode="wait">
@@ -117,7 +117,7 @@ export function Testimonials() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.35, ease: 'easeInOut' }}
               >
-                <div className="flex items-start gap-5 mb-6">
+                <div className="flex items-start gap-3 sm:gap-5 mb-5 sm:mb-6">
                   <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-black text-lg flex-shrink-0 shadow-lg"
                     style={{ backgroundColor: testimonials[active].color }}
@@ -138,7 +138,7 @@ export function Testimonials() {
                     </span>
                   </div>
                 </div>
-                <blockquote className="text-[#374151] text-lg leading-relaxed italic">
+                <blockquote className="text-[#374151] text-base sm:text-lg leading-relaxed italic">
                   "{testimonials[active].text}"
                 </blockquote>
               </motion.div>
@@ -171,13 +171,13 @@ export function Testimonials() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-10"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4 mt-6 sm:mt-10"
         >
           {testimonials.map((t, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`group relative p-4 rounded-2xl border transition-all duration-300 text-left ${i === active ? 'bg-[#0A1628] border-transparent' : 'bg-[#F8FAFC] border-slate-100 hover:border-slate-200 hover:bg-white'}`}
+              className={`group relative p-3 sm:p-4 rounded-2xl border transition-all duration-300 text-left ${i === active ? 'bg-[#0A1628] border-transparent' : 'bg-[#F8FAFC] border-slate-100 hover:border-slate-200 hover:bg-white'}`}
             >
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: t.color }}>

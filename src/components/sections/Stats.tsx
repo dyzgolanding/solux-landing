@@ -53,7 +53,7 @@ export function Stats() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="relative py-20 bg-[#F8FAFC] overflow-hidden">
+    <section ref={ref} className="relative py-12 sm:py-20 bg-[#F8FAFC] overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0A6EBD]/30 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0A6EBD]/20 to-transparent" />
 
@@ -69,7 +69,7 @@ export function Stats() {
                 y: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
                 scale: { type: 'spring', stiffness: 280, damping: 18, delay: i * 0.1 },
               }}
-              className="relative group flex flex-col items-center text-center p-6 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-400"
+              className="relative group flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-400"
             >
               <div className="w-10 h-1 rounded-full mb-4" style={{ backgroundColor: stat.color }} />
               <div className="text-3xl sm:text-5xl font-black mb-2 tabular-nums" style={{ color: stat.color }}>

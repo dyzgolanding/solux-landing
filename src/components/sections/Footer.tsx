@@ -114,7 +114,7 @@ export function Footer() {
               <div className="flex flex-col gap-3">
                 <a
                   href="https://cotiza.soluxenergy.cl"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-bold text-sm hover:scale-105 transition-transform duration-200"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-bold text-sm hover:scale-105 transition-transform duration-200"
                 >
                   Cotiza gratis →
                 </a>
@@ -122,7 +122,7 @@ export function Footer() {
                   href="https://wa.me/56934015468?text=Hola%20SOLUX%20Energy%2C%20quiero%20información%20sobre%20paneles%20solares"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-white/15 text-white/70 font-semibold text-sm hover:bg-white/8 hover:text-white transition-all duration-200"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-white/15 text-white/70 font-semibold text-sm hover:bg-white/8 hover:text-white transition-all duration-200"
                 >
                   <Phone className="w-4 h-4 text-[#22C55E]" />
                   WhatsApp directo

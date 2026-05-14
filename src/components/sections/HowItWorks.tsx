@@ -129,7 +129,7 @@ export function HowItWorks() {
         >
           <a
             href="https://cotiza.soluxenergy.cl"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-[#0A1628] text-white font-bold text-lg hover:bg-[#0F2040] hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+            className="inline-flex items-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl bg-[#0A1628] text-white font-bold text-base sm:text-lg hover:bg-[#0F2040] hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
           >
             Quiero cotizar ahora
             <span className="text-[#F5A623]">→</span>
