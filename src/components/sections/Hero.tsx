@@ -205,27 +205,7 @@ export function Hero() {
             <div className="animate-hero-2">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight">
                 Tu techo,{' '}
-                <span className="relative">
-                  <span className="gradient-text">tu energía</span>
-                  <svg
-                    className="absolute -bottom-2 left-0 w-full"
-                    viewBox="0 0 300 12"
-                    fill="none"
-                  >
-                    <path
-                      d="M2 8 Q75 2 150 6 Q225 10 298 4"
-                      stroke="url(#underlineGrad)"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                    <defs>
-                      <linearGradient id="underlineGrad" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#F5A623" />
-                        <stop offset="100%" stopColor="#0A6EBD" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </span>
+                <span className="gradient-text">tu energía</span>
                 <br />
                 <span className="text-white/90">sin complicaciones.</span>
               </h1>
