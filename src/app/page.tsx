@@ -7,7 +7,9 @@ import { IntroAnimation } from '@/components/ui/IntroAnimation'
 const ScrollCarousel = dynamic(() => import('@/components/sections/ScrollCarousel').then(m => ({ default: m.ScrollCarousel })))
 const HowItWorks    = dynamic(() => import('@/components/sections/HowItWorks').then(m => ({ default: m.HowItWorks })))
 const Benefits      = dynamic(() => import('@/components/sections/Benefits').then(m => ({ default: m.Benefits })))
+const PhotoGallery  = dynamic(() => import('@/components/sections/PhotoGallery').then(m => ({ default: m.PhotoGallery })))
 const Process       = dynamic(() => import('@/components/sections/Process').then(m => ({ default: m.Process })))
+const Testimonials  = dynamic(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })))
 const FAQ           = dynamic(() => import('@/components/sections/FAQ').then(m => ({ default: m.FAQ })))
 const CTA           = dynamic(() => import('@/components/sections/CTA').then(m => ({ default: m.CTA })))
 const Footer        = dynamic(() => import('@/components/sections/Footer').then(m => ({ default: m.Footer })))
@@ -23,7 +25,9 @@ export default function Home() {
         <ScrollCarousel />
         <HowItWorks />
         <Benefits />
+        <PhotoGallery />
         <Process />
+        <Testimonials />
         <FAQ />
         <CTA />
       </main>

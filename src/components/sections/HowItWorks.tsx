@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { MessageSquare, Hammer, TrendingUp } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
+import { RevealText } from '@/components/ui/RevealText'
 
 const steps = [
   {
@@ -47,18 +48,18 @@ export function HowItWorks() {
       <Container>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 30 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.7 }}
           className="text-center mb-10 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#F8FAFC] border border-slate-200 text-sm font-semibold text-[#0A6EBD] mb-4">
             Así de simple
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
-            Tres pasos para{' '}
+          <RevealText className="text-3xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
+            {"Tres pasos para "}
             <span className="gradient-text">empezar a ahorrar</span>
-          </h2>
+          </RevealText>
           <p className="text-lg text-[#64748B] max-w-xl mx-auto">
             Sin burocracia, sin sorpresas. Te acompañamos en cada etapa del proceso.
           </p>

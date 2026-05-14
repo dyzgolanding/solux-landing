@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
+import { RevealText } from '@/components/ui/RevealText'
 
 const faqs = [
   {
@@ -14,7 +15,7 @@ const faqs = [
   {
     question: '¿Cuánto tiempo dura la instalación?',
     answer:
-      'La instalación física en tu hogar toma 1-2 días. Sin embargo, el proceso completo (cotización, diseño, instalación y certificación SEC) toma entre 4-8 semanas. Todo depende de la complejidad de tu proyecto y los tiempos de la SEC.',
+      'Una vez que das el visto bueno, el proceso completo —instalación y certificación SEC— toma máximo 5 a 6 días. Primero hacemos una visita gratuita para evaluar tu hogar y entregarte el presupuesto exacto, sin costos de por medio.',
   },
   {
     question: '¿Necesito salir de casa durante la instalación?',
@@ -124,18 +125,18 @@ export function FAQ() {
       <Container size="md">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 30 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.7 }}
           className="text-center mb-8 md:mb-12"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-[#0A6EBD] mb-4">
             Preguntas frecuentes
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
-            ¿Tienes dudas?{' '}
+          <RevealText className="text-3xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
+            {"¿Tienes dudas? "}
             <span className="gradient-text">Las respondemos</span>
-          </h2>
+          </RevealText>
           <p className="text-lg text-[#64748B]">
             Todo lo que necesitas saber antes de dar el paso.
           </p>

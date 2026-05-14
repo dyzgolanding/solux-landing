@@ -5,21 +5,19 @@ import { motion, useInView } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 
 const stats = [
-  { value: 65, suffix: '%', label: 'Ahorro promedio', color: '#F5A623', description: 'En cuenta de luz' },
-  { value: 25, suffix: ' años', label: 'Garantía de rendimiento', color: '#60B4F7', description: 'En paneles incluida' },
-  { value: 100, suffix: '%', label: 'Trámites SEC', color: '#22C55E', description: 'Gestionados por nosotros' },
-  { value: 12, suffix: ' años', label: 'Garantía de equipos', color: '#FBBF24', description: 'Inversores y componentes' },
+  { value: 5, suffix: ' años', label: 'De experiencia', color: '#F5A623', description: 'En el mercado solar chileno' },
+  { value: 10, suffix: '+', label: 'Hogares instalados', color: '#22C55E', description: 'Clientes satisfechos' },
+  { value: 100, suffix: '%', label: 'Trámites SEC', color: '#60B4F7', description: 'Gestionados por nosotros' },
+  { value: 6, suffix: ' días', label: 'Instalación completa', color: '#FBBF24', description: 'Desde que das el sí' },
 ]
 
 function CountUp({
   target,
   suffix,
-  decimals = 0,
   started,
 }: {
   target: number
   suffix: string
-  decimals?: number
   started: boolean
 }) {
   const [count, setCount] = useState(0)
@@ -44,7 +42,7 @@ function CountUp({
 
   return (
     <span>
-      {decimals > 0 ? count.toFixed(decimals) : Math.round(count)}
+      {Math.round(count)}
       {suffix}
     </span>
   )
@@ -56,7 +54,6 @@ export function Stats() {
 
   return (
     <section ref={ref} className="relative py-20 bg-[#F8FAFC] overflow-hidden">
-      {/* Top border gradient */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0A6EBD]/30 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0A6EBD]/20 to-transparent" />
 
@@ -74,31 +71,12 @@ export function Stats() {
               }}
               className="relative group flex flex-col items-center text-center p-6 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-400"
             >
-              {/* Accent line */}
-              <div
-                className="w-10 h-1 rounded-full mb-4"
-                style={{ backgroundColor: stat.color }}
-              />
-
-              <div
-                className="text-3xl sm:text-5xl font-black mb-2 tabular-nums"
-                style={{ color: stat.color }}
-              >
-                <CountUp
-                  target={stat.value}
-                  suffix={stat.suffix}
-                  started={isInView}
-                />
+              <div className="w-10 h-1 rounded-full mb-4" style={{ backgroundColor: stat.color }} />
+              <div className="text-3xl sm:text-5xl font-black mb-2 tabular-nums" style={{ color: stat.color }}>
+                <CountUp target={stat.value} suffix={stat.suffix} started={isInView} />
               </div>
-
-              <div className="text-[#0A1628] font-bold text-sm sm:text-base mb-1">
-                {stat.label}
-              </div>
-              <div className="text-[#94A3B8] text-xs sm:text-sm">
-                {stat.description}
-              </div>
-
-              {/* Separator (not on last) */}
+              <div className="text-[#0A1628] font-bold text-sm sm:text-base mb-1">{stat.label}</div>
+              <div className="text-[#94A3B8] text-xs sm:text-sm">{stat.description}</div>
               {i < stats.length - 1 && (
                 <div className="hidden lg:block absolute right-0 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent" />
               )}
@@ -106,7 +84,6 @@ export function Stats() {
           ))}
         </div>
 
-        {/* Bottom note */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}

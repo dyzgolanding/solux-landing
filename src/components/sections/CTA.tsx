@@ -2,8 +2,10 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Zap, Phone } from 'lucide-react'
+import { Phone } from 'lucide-react'
+import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
+import { RevealText } from '@/components/ui/RevealText'
 
 export function CTA() {
   const ref = useRef<HTMLDivElement>(null)
@@ -11,8 +13,19 @@ export function CTA() {
 
   return (
     <section ref={ref} className="py-24 relative overflow-hidden bg-[#0A1628]">
+      {/* Background photo */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/paneles-casa-ladera-aerea-2.jpeg"
+          alt="Instalación solar residencial"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[#0A1628]/88" />
+      </div>
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0A6EBD]/30 via-[#0A1628] to-[#F5A623]/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0A6EBD]/25 via-transparent to-[#F5A623]/8" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0A6EBD]/60 to-transparent" />
 
       {/* Ambient orbs */}
@@ -30,8 +43,8 @@ export function CTA() {
 
       <Container size="md" className="relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 40 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center"
         >
@@ -41,11 +54,11 @@ export function CTA() {
             Cotización 100% gratuita, sin compromisos
           </div>
 
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
-            Empieza a ahorrar
+          <RevealText className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
+            {"Empieza a ahorrar"}
             <br />
             <span className="gradient-text">desde hoy</span>
-          </h2>
+          </RevealText>
 
           <p className="text-base sm:text-xl text-white/50 mb-10 max-w-lg mx-auto">
             Miles de hogares en Chile ya se benefician de la energía solar.
@@ -61,7 +74,6 @@ export function CTA() {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-3 px-7 py-4 sm:px-10 sm:py-5 rounded-2xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-black text-lg sm:text-xl shadow-2xl hover:shadow-[0_0_50px_rgba(245,166,35,0.5)] transition-shadow duration-300"
             >
-              <Zap className="w-6 h-6" strokeWidth={2.5} />
               Cotiza gratis ahora
             </motion.a>
 

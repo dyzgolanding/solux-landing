@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { DollarSign, Shield, Zap, BarChart3, Clock, Leaf } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { TiltCard } from '@/components/ui/TiltCard'
+import { RevealText } from '@/components/ui/RevealText'
 
 const benefits = [
   {
@@ -60,18 +61,18 @@ export function Benefits() {
       <Container>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 30 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.7 }}
           className="text-center mb-10 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-[#22C55E] mb-4">
             ¿Por qué SOLUX?
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
-            Todo lo que necesitas,{' '}
+          <RevealText className="text-3xl sm:text-5xl font-black text-[#0A1628] leading-tight mb-4">
+            {"Todo lo que necesitas, "}
             <span className="gradient-text-blue">sin complicaciones</span>
-          </h2>
+          </RevealText>
           <p className="text-lg text-[#64748B] max-w-xl mx-auto">
             Nos encargamos de absolutamente todo. Tú solo disfrutas los ahorros.
           </p>

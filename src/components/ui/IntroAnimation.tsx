@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react"
 
-const LETTERS = ["S", "O", "L", "U", "X"]
+const LETTERS = [
+  { char: "S", color: "#F5A623" },
+  { char: "O", color: "#F5A623" },
+  { char: "L", color: "#F5A623" },
+  { char: "U", color: "#0A6EBD" },
+  { char: "X", color: "#0A6EBD" },
+]
 
 const LETTER_IN_STAGGER  = 100
 const LETTER_IN_DUR      = 700
@@ -73,6 +79,10 @@ export function IntroAnimation() {
                  transform ${LETTER_IN_DUR}ms cubic-bezier(0.16,1,0.3,1) ${i * LETTER_IN_STAGGER}ms`
               : "none"
 
+            const glowColor = letter.color === "#F5A623"
+              ? "rgba(245,166,35,0.5), 0 0 160px rgba(245,166,35,0.2)"
+              : "rgba(10,110,189,0.5), 0 0 160px rgba(10,110,189,0.2)"
+
             return (
               <span
                 key={i}
@@ -80,18 +90,16 @@ export function IntroAnimation() {
                 style={{
                   fontSize: `calc((100vw - 64px) / ${LETTERS.length})`,
                   letterSpacing: "0.05em",
-                  color: "#F5A623",
+                  color: letter.color,
                   opacity,
                   filter: `blur(${blur}px)`,
                   transform: `translateY(${translateY}px)`,
                   transition,
                   willChange: "opacity, filter, transform",
-                  textShadow: isIn
-                    ? "0 0 80px rgba(245,166,35,0.5), 0 0 160px rgba(245,166,35,0.2)"
-                    : "none",
+                  textShadow: isIn ? `0 0 80px ${glowColor}` : "none",
                 }}
               >
-                {letter}
+                {letter.char}
               </span>
             )
           })}

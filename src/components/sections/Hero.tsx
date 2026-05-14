@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 // Left column uses CSS animations (globals.css) to show content before JS loads
 import { useRef } from 'react'
-import { Zap, ChevronDown, Shield, Star, Clock } from 'lucide-react'
+import { ChevronDown, Shield, Star, Clock } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 
 const SUN_RAYS = [0, 45, 90, 135, 180, 225, 270, 315].map((angle) => ({
@@ -162,19 +162,6 @@ const SolarHouseIllustration = () => (
   </svg>
 )
 
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-}
-
-const fadeUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' as const } },
-}
-
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
@@ -257,7 +244,6 @@ export function Hero() {
                 href="https://cotiza.soluxenergy.cl"
                 className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-bold text-base sm:text-lg shadow-2xl hover:shadow-[0_0_40px_rgba(245,166,35,0.45)] transition-all duration-300 hover:scale-105 active:scale-95"
               >
-                <Zap className="w-5 h-5" strokeWidth={2.5} />
                 Cotiza gratis — 2 minutos
                 <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
               </a>

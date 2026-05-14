@@ -1,15 +1,16 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { DollarSign, Shield, Zap, BarChart3, Leaf, Clock } from 'lucide-react'
+import { RevealText } from '@/components/ui/RevealText'
 
 const cards = [
   {
     number: '01',
     tag: 'Ahorro real',
     title: 'Reduce hasta el 65% de tu boleta eléctrica',
-    description: 'Nuestros clientes ahorran en promedio $65.000 al mes desde el primer mes de instalación. Sin esperar, sin letra chica.',
+    description: 'Nuestros clientes ahorran en promedio $65.000 al mes desde el primer mes de instalación.',
     stat: '$65.000',
     statLabel: 'ahorro promedio mensual',
     color: '#F5A623',
@@ -19,7 +20,7 @@ const cards = [
     number: '02',
     tag: 'Sin inversión inicial',
     title: 'Cuotas que se pagan con el ahorro de tu boleta',
-    description: 'Accede a financiamiento con cuotas que en muchos casos son menores al ahorro mensual en tu cuenta de luz.',
+    description: 'Accede a financiamiento con cuotas que en muchos casos son menores al ahorro mensual.',
     stat: '$0',
     statLabel: 'inversión inicial requerida',
     color: '#22C55E',
@@ -29,7 +30,7 @@ const cards = [
     number: '03',
     tag: 'Garantía total',
     title: '25 años de garantía de rendimiento en tus paneles',
-    description: 'Trabajamos con fabricantes líderes mundiales. Garantía de 25 años en rendimiento y 12 años en equipos.',
+    description: 'Trabajamos con fabricantes líderes mundiales. 25 años de rendimiento garantizado.',
     stat: '25 años',
     statLabel: 'de garantía incluida',
     color: '#0A6EBD',
@@ -38,8 +39,8 @@ const cards = [
   {
     number: '04',
     tag: 'Monitoreo 24/7',
-    title: 'Controla tu producción de energía desde el celular',
-    description: 'App incluida para ver en tiempo real cuánta energía produce tu techo, cuánto estás ahorrando y tu impacto ambiental.',
+    title: 'Controla tu energía solar desde el celular',
+    description: 'App incluida para ver en tiempo real cuánta energía produce tu techo y cuánto ahorras.',
     stat: '24/7',
     statLabel: 'monitoreo en tiempo real',
     color: '#60B4F7',
@@ -49,7 +50,7 @@ const cards = [
     number: '05',
     tag: 'Retorno rápido',
     title: 'Recupera tu inversión en 4 a 6 años',
-    description: 'Con el ahorro mensual acumulado, la instalación se paga sola. Los años siguientes son pura ganancia para ti.',
+    description: 'Con el ahorro mensual acumulado, la instalación se paga sola. Los años siguientes son pura ganancia.',
     stat: '4-6 años',
     statLabel: 'retorno de inversión',
     color: '#FBBF24',
@@ -59,7 +60,7 @@ const cards = [
     number: '06',
     tag: 'Impacto real',
     title: 'Evita toneladas de CO₂ cada año',
-    description: 'Un sistema típico SOLUX evita entre 1.5 y 3 toneladas de CO₂ anualmente. Contribuye activamente al futuro del planeta.',
+    description: 'Un sistema típico SOLUX evita entre 1.5 y 3 toneladas de CO₂ anualmente. Energía limpia de verdad.',
     stat: '2 ton',
     statLabel: 'CO₂ evitado por año',
     color: '#22C55E',
@@ -67,140 +68,142 @@ const cards = [
   },
 ]
 
-const CARD_WIDTH = 360
-const CARD_GAP = 20
+const CARD_W = 320
+const GAP = 24
+// Total width of one set — animation moves exactly this far to loop seamlessly
+const TRACK_UNIT = cards.length * (CARD_W + GAP)
 
 export function ScrollCarousel() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  // scrollYProgress: 0 = section top at viewport bottom (entering), 1 = section bottom at viewport top (exiting)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-
-  // Move enough to reveal ~3 extra cards beyond what's initially visible
-  // Slow rate (~0.8px horizontal per 1px vertical) keeps the motion comfortable
-  const totalMove = 3 * (CARD_WIDTH + CARD_GAP)
-
-  // Start at x=0 as soon as section enters (card 01 visible), finish before section fully exits
-  const rawX = useTransform(scrollYProgress, [0, 0.75], [0, -totalMove])
-  const x = useSpring(rawX, { stiffness: 80, damping: 20, restDelta: 0.5 })
-  const progressWidth = useTransform(scrollYProgress, [0, 0.75], ['0%', '100%'])
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative overflow-hidden bg-[#0A1628] py-24"
-      style={{ minHeight: '100vh' }}
-    >
+    <section ref={ref} className="relative bg-[#0A1628] py-16 md:py-24 overflow-hidden">
+      <style>{`
+        @keyframes solux-marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-${TRACK_UNIT}px); }
+        }
+        .solux-track {
+          animation: solux-marquee 32s linear infinite;
+          will-change: transform;
+        }
+        .solux-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       {/* Ambient glow */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 rounded-full bg-[#F5A623]/6 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-[#0A6EBD]/8 blur-[100px] pointer-events-none" />
 
       {/* Header */}
-      <div className="px-6 sm:px-12 lg:px-20 mb-12 flex items-end justify-between">
-        <div>
-          <span className="inline-block px-3 py-1 rounded-full bg-white/8 border border-white/15 text-xs font-semibold text-[#F5A623] mb-3">
-            ¿Por qué SOLUX?
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight">
-            Todo lo que necesitas,<br />
-            <span className="gradient-text">sin complicaciones</span>
-          </h2>
-        </div>
+      <motion.div
+        initial={{ y: 30 }}
+        animate={isInView ? { y: 0 } : {}}
+        transition={{ duration: 0.7 }}
+        className="text-center px-6 sm:px-12 lg:px-20 mb-12"
+      >
+        <span className="inline-block px-3 py-1 rounded-full bg-white/8 border border-white/15 text-xs font-semibold text-[#F5A623] mb-3">
+          ¿Por qué SOLUX?
+        </span>
+        <RevealText className="text-3xl sm:text-5xl font-black text-white leading-tight">
+          {"Todo lo que necesitas,"}
+          <br />
+          <span className="gradient-text">sin complicaciones</span>
+        </RevealText>
+      </motion.div>
 
-        {/* Progress bar */}
-        <div className="hidden md:flex flex-col items-end gap-2">
-          <span className="text-white/40 text-xs">{cards.length} razones</span>
-          <div className="w-32 h-1 rounded-full bg-white/10 overflow-hidden">
-            <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-[#F5A623] to-[#0A6EBD]"
-              style={{ width: progressWidth }}
-            />
-          </div>
+      {/* Marquee strip */}
+      <div className="relative">
+        {/* Edge fades */}
+        <div
+          className="absolute inset-y-0 left-0 w-24 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, #0A1628, transparent)' }}
+        />
+        <div
+          className="absolute inset-y-0 right-0 w-24 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to left, #0A1628, transparent)' }}
+        />
+
+        {/* Scrolling track — duplicated for seamless loop */}
+        <div
+          className="solux-track flex"
+          style={{ gap: GAP, width: TRACK_UNIT * 2, paddingLeft: GAP }}
+        >
+          {[...cards, ...cards].map((card, i) => {
+            const Icon = card.Icon
+            return (
+              <div
+                key={i}
+                className="flex-shrink-0 relative bg-white/5 border border-white/10 rounded-3xl p-6 overflow-hidden"
+                style={{ width: CARD_W }}
+              >
+                {/* Top color line */}
+                <div
+                  className="absolute top-0 left-6 right-6 h-px"
+                  style={{ backgroundColor: card.color, opacity: 0.5 }}
+                />
+
+                {/* Background number */}
+                <span className="absolute top-3 right-5 text-7xl font-black text-white/8 leading-none select-none pointer-events-none">
+                  {card.number}
+                </span>
+
+                <div className="relative flex flex-col gap-5">
+                  {/* Icon + tag */}
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: `${card.color}20` }}
+                    >
+                      <Icon className="w-5 h-5" style={{ color: card.color }} strokeWidth={2} />
+                    </div>
+                    <span
+                      className="text-xs font-bold px-3 py-1 rounded-full"
+                      style={{ backgroundColor: `${card.color}15`, color: card.color }}
+                    >
+                      {card.tag}
+                    </span>
+                  </div>
+
+                  {/* Stat */}
+                  <div>
+                    <p className="text-4xl font-black leading-none" style={{ color: card.color }}>
+                      {card.stat}
+                    </p>
+                    <p className="text-white/35 text-xs mt-1">{card.statLabel}</p>
+                  </div>
+
+                  {/* Text */}
+                  <div>
+                    <h3 className="text-base font-black text-white leading-snug mb-2">
+                      {card.title}
+                    </h3>
+                    <p className="text-white/50 text-sm leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
 
-      {/* Scrolling cards */}
+      {/* CTA */}
       <motion.div
-        style={{ x, gap: CARD_GAP, paddingLeft: '5vw', paddingRight: '5vw' }}
-        className="flex will-change-transform"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="text-center mt-12"
       >
-        {cards.map((card) => {
-          const Icon = card.Icon
-          return (
-            <div
-              key={card.number}
-              className="flex-shrink-0 relative bg-white/5 border border-white/10 rounded-3xl p-5 sm:p-8 overflow-hidden"
-              style={{ width: CARD_WIDTH }}
-            >
-              {/* Background number */}
-              <span className="absolute top-4 right-6 text-7xl font-black text-white/8 leading-none select-none pointer-events-none">
-                {card.number}
-              </span>
-
-              {/* Color accent top bar */}
-              <div className="absolute top-0 left-8 right-8 h-px" style={{ backgroundColor: card.color, opacity: 0.4 }} />
-
-              <div className="relative flex flex-col h-full gap-5">
-                {/* Icon + Tag */}
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: `${card.color}18` }}
-                  >
-                    <Icon className="w-5 h-5" style={{ color: card.color }} strokeWidth={2} />
-                  </div>
-                  <span
-                    className="text-xs font-bold px-3 py-1 rounded-full"
-                    style={{ backgroundColor: `${card.color}15`, color: card.color }}
-                  >
-                    {card.tag}
-                  </span>
-                </div>
-
-                {/* Stat */}
-                <div>
-                  <p className="text-4xl sm:text-5xl font-black leading-none" style={{ color: card.color }}>
-                    {card.stat}
-                  </p>
-                  <p className="text-white/35 text-xs mt-1">{card.statLabel}</p>
-                </div>
-
-                {/* Text */}
-                <div>
-                  <h3 className="text-lg font-black text-white leading-snug mb-2">
-                    {card.title}
-                  </h3>
-                  <p className="text-white/50 text-sm leading-relaxed">
-                    {card.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )
-        })}
-
-        {/* CTA card */}
-        <div
-          className="flex-shrink-0 rounded-3xl border-2 border-dashed border-white/15 flex flex-col items-center justify-center gap-5 text-center p-8"
-          style={{ width: 260 }}
+        <a
+          href="https://cotiza.soluxenergy.cl"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-black text-base hover:scale-105 transition-transform shadow-lg shadow-[#F5A623]/20"
         >
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#F5A623] to-[#FBBF24] flex items-center justify-center shadow-2xl shadow-[#F5A623]/20">
-            <Zap className="w-7 h-7 text-[#0A1628]" strokeWidth={2.5} />
-          </div>
-          <div>
-            <p className="text-white font-black text-lg mb-1">¿Convencido?</p>
-            <p className="text-white/40 text-sm">Tu propuesta en 2 minutos</p>
-          </div>
-          <a
-            href="https://cotiza.soluxenergy.cl"
-            className="px-6 py-3 rounded-2xl bg-gradient-to-r from-[#F5A623] to-[#FBBF24] text-[#0A1628] font-black text-sm hover:scale-105 transition-transform shadow-lg"
-          >
-            Cotiza gratis →
-          </a>
-        </div>
+          Cotiza gratis ahora
+        </a>
       </motion.div>
     </section>
   )

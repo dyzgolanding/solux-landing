@@ -7,49 +7,49 @@ import { Container } from '@/components/ui/Container'
 
 const testimonials = [
   {
-    name: 'Rodrigo Fuentes',
+    name: 'Ana Muñoz',
     location: 'Las Condes, Santiago',
-    initials: 'RF',
+    initials: 'AM',
     rating: 5,
-    text: 'El proceso fue increíblemente fácil. Cotice en línea, en dos días me contactaron con la propuesta, y en tres semanas ya tenía los paneles funcionando. Mi cuenta de luz bajó un 70%.',
-    saving: '-70% cuenta de luz',
+    text: 'Honestamente pensé que iba a ser más complicado. Vinieron a la casa, miraron el techo, me explicaron todo bien explicado y listo. No me intentaron vender nada raro. La boleta de este mes me llegó casi a la mitad, todavía no lo puedo creer.',
+    saving: '-52% cuenta de luz',
     color: '#F5A623',
   },
   {
-    name: 'Juan Cortéz', 
-    location: 'Chile, Kennedy',
-    initials: 'ES',
+    name: 'Roberto Sánchez',
+    location: 'Maipú, Santiago',
+    initials: 'RS',
     rating: 5,
-    text: 'Tenia miedo de que me metieran el pico por que es lo que me hacen normalmente y ya estaba harto pero esta vez no fue asi, gracias SOLUX',
-    saving: '-58% cuenta de luz',
+    text: 'Yo soy de los que desconfían de todo esto, así que pregunté harto antes de decir que sí. Me respondieron todo sin rollo. Terminaron en menos de una semana y todo quedó tal cual me dijeron. Ojalá lo hubiera hecho antes.',
+    saving: '-61% cuenta de luz',
     color: '#0A6EBD',
   },
   {
-    name: 'Carlos Espinoza',
+    name: 'Claudia Herrera',
     location: 'Viña del Mar',
-    initials: 'CE',
+    initials: 'CH',
     rating: 5,
-    text: 'Inversión recuperada en 5 años según me dijeron, y los números van perfectos. La app para monitorear la producción es increíble, me encanta ver cuánta energía genero cada día.',
-    saving: '-62% cuenta de luz',
+    text: 'Lo que más me gustó es que no me presionaron para nada. Vinieron, me dieron el presupuesto y me dejaron pensarlo. Cuando dije que sí, se movieron rapidísimo. Ya le conté a mis vecinas y dos están en proceso también.',
+    saving: '-58% cuenta de luz',
     color: '#22C55E',
   },
   {
-    name: 'Patricia Lagos',
-    location: 'La Florida, Santiago',
-    initials: 'PL',
+    name: 'Jorge Mendoza',
+    location: 'Concepción',
+    initials: 'JM',
     rating: 5,
-    text: 'El equipo de instalación fue muy profesional y ordenado. Dejaron todo limpio y el sistema funcionó perfectamente desde el primer día. Los recomiendo 100%.',
-    saving: '-65% cuenta de luz',
-    color: '#FBBF24',
-  },
-  {
-    name: 'Martín Sepúlveda',
-    location: 'Temuco',
-    initials: 'MS',
-    rating: 5,
-    text: 'Pensé que en Temuco no llegaría la cobertura, pero SOLUX llegó sin problema. La propuesta fue exacta, el ahorro real se está cumpliendo mes a mes.',
+    text: 'Yo tenía miedo de que llegaran con el cuento de que todo iba a ser barato y después vinieran los cobros escondidos. Pero no, el precio que me dijeron fue el precio que pagué. Los chicos son derechos.',
     saving: '-55% cuenta de luz',
     color: '#60B4F7',
+  },
+  {
+    name: 'Valentina Torres',
+    location: 'La Florida, Santiago',
+    initials: 'VT',
+    rating: 5,
+    text: 'Mi marido no quería ni escuchar el tema, pero cuando le mostré la primera boleta se quedó callado jajaja. Los que instalaron fueron simpáticos, ordenados y no tardaron nada. Cero problemas desde que está funcionando.',
+    saving: '-63% cuenta de luz',
+    color: '#FBBF24',
   },
 ]
 
@@ -57,13 +57,7 @@ function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-1">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          className="w-4 h-4"
-          fill={i < rating ? '#F5A623' : 'none'}
-          stroke={i < rating ? '#F5A623' : '#94A3B8'}
-          strokeWidth={1.5}
-        />
+        <Star key={i} className="w-4 h-4" fill={i < rating ? '#F5A623' : 'none'} stroke={i < rating ? '#F5A623' : '#94A3B8'} strokeWidth={1.5} />
       ))}
     </div>
   )
@@ -100,8 +94,8 @@ export function Testimonials() {
                 <Star key={i} className="w-5 h-5" fill="#F5A623" stroke="#F5A623" />
               ))}
             </div>
-            <span className="font-bold text-[#0A1628]">4.9</span>
-            <span>— +500 reseñas verificadas</span>
+            <span className="font-bold text-[#0A1628]">5.0</span>
+            <span>— 10 clientes satisfechos</span>
           </div>
         </motion.div>
 
@@ -113,11 +107,7 @@ export function Testimonials() {
           className="relative max-w-3xl mx-auto"
         >
           <div className="relative bg-[#F8FAFC] rounded-3xl p-8 sm:p-10 border border-slate-100 overflow-hidden">
-            {/* Quote icon */}
-            <Quote
-              className="absolute top-6 right-8 w-16 h-16 opacity-5"
-              style={{ color: testimonials[active].color }}
-            />
+            <Quote className="absolute top-6 right-8 w-16 h-16 opacity-5" style={{ color: testimonials[active].color }} />
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -128,33 +118,26 @@ export function Testimonials() {
                 transition={{ duration: 0.35, ease: 'easeInOut' }}
               >
                 <div className="flex items-start gap-5 mb-6">
-                  {/* Avatar */}
                   <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-black text-lg flex-shrink-0 shadow-lg"
                     style={{ backgroundColor: testimonials[active].color }}
                   >
                     {testimonials[active].initials}
                   </div>
-
                   <div>
                     <StarRating rating={testimonials[active].rating} />
                     <div className="font-bold text-[#0A1628] mt-1">{testimonials[active].name}</div>
                     <div className="text-sm text-[#94A3B8]">{testimonials[active].location}</div>
                   </div>
-
                   <div className="ml-auto">
                     <span
                       className="inline-flex items-center px-3 py-1.5 rounded-xl text-sm font-bold"
-                      style={{
-                        backgroundColor: `${testimonials[active].color}15`,
-                        color: testimonials[active].color,
-                      }}
+                      style={{ backgroundColor: `${testimonials[active].color}15`, color: testimonials[active].color }}
                     >
                       {testimonials[active].saving}
                     </span>
                   </div>
                 </div>
-
                 <blockquote className="text-[#374151] text-lg leading-relaxed italic">
                   "{testimonials[active].text}"
                 </blockquote>
@@ -164,33 +147,20 @@ export function Testimonials() {
 
           {/* Navigation */}
           <div className="flex items-center justify-between mt-6">
-            <button
-              onClick={prev}
-              className="w-11 h-11 rounded-xl bg-[#F8FAFC] border border-slate-200 flex items-center justify-center text-[#64748B] hover:bg-[#0A1628] hover:text-white hover:border-transparent transition-all duration-200"
-            >
+            <button onClick={prev} className="w-11 h-11 rounded-xl bg-[#F8FAFC] border border-slate-200 flex items-center justify-center text-[#64748B] hover:bg-[#0A1628] hover:text-white hover:border-transparent transition-all duration-200">
               <ChevronLeft className="w-5 h-5" />
             </button>
-
-            {/* Dots */}
             <div className="flex gap-2">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setActive(i)}
                   className="rounded-full transition-all duration-300"
-                  style={{
-                    width: i === active ? 24 : 8,
-                    height: 8,
-                    backgroundColor: i === active ? testimonials[active].color : '#E2E8F0',
-                  }}
+                  style={{ width: i === active ? 24 : 8, height: 8, backgroundColor: i === active ? testimonials[active].color : '#E2E8F0' }}
                 />
               ))}
             </div>
-
-            <button
-              onClick={next}
-              className="w-11 h-11 rounded-xl bg-[#F8FAFC] border border-slate-200 flex items-center justify-center text-[#64748B] hover:bg-[#0A1628] hover:text-white hover:border-transparent transition-all duration-200"
-            >
+            <button onClick={next} className="w-11 h-11 rounded-xl bg-[#F8FAFC] border border-slate-200 flex items-center justify-center text-[#64748B] hover:bg-[#0A1628] hover:text-white hover:border-transparent transition-all duration-200">
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
@@ -207,26 +177,16 @@ export function Testimonials() {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`group relative p-4 rounded-2xl border transition-all duration-300 text-left ${i === active
-                ? 'bg-[#0A1628] border-transparent'
-                : 'bg-[#F8FAFC] border-slate-100 hover:border-slate-200 hover:bg-white'
-                }`}
+              className={`group relative p-4 rounded-2xl border transition-all duration-300 text-left ${i === active ? 'bg-[#0A1628] border-transparent' : 'bg-[#F8FAFC] border-slate-100 hover:border-slate-200 hover:bg-white'}`}
             >
               <div className="flex items-center gap-2 mb-2">
-                <div
-                  className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold"
-                  style={{ backgroundColor: t.color }}
-                >
+                <div className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: t.color }}>
                   {t.initials}
                 </div>
                 <StarRating rating={t.rating} />
               </div>
-              <div className={`text-xs font-semibold ${i === active ? 'text-white' : 'text-[#0A1628]'}`}>
-                {t.name}
-              </div>
-              <div className={`text-xs ${i === active ? 'text-white/50' : 'text-[#94A3B8]'}`}>
-                {t.location}
-              </div>
+              <div className={`text-xs font-semibold ${i === active ? 'text-white' : 'text-[#0A1628]'}`}>{t.name}</div>
+              <div className={`text-xs ${i === active ? 'text-white/50' : 'text-[#94A3B8]'}`}>{t.location}</div>
             </button>
           ))}
         </motion.div>

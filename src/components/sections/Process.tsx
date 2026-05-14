@@ -2,44 +2,39 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ClipboardList, FileSearch, Wrench, BadgeCheck, Wallet } from 'lucide-react'
+import { HomeIcon, FileText, Wrench, Wallet } from 'lucide-react'
+import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
+import { RevealText } from '@/components/ui/RevealText'
 
 const steps = [
   {
-    icon: ClipboardList,
-    title: 'Cotización online',
-    description: 'Respondes unas preguntas básicas sobre tu vivienda en 2 minutos. Gratis, sin compromisos.',
-    time: '2 minutos',
+    icon: HomeIcon,
+    title: 'Visita gratuita',
+    description: 'Vamos a tu hogar, evaluamos tu techo y entendemos lo que buscas. Sin costo, sin compromiso.',
+    time: 'Gratis',
     color: '#F5A623',
   },
   {
-    icon: FileSearch,
-    title: 'Propuesta personalizada',
-    description: 'Usamos tecnología satelital e información de tu consumo para generarte una propuesta exacta y a medida.',
-    time: '24-48 horas',
+    icon: FileText,
+    title: 'Presupuesto exacto',
+    description: 'Te entregamos una propuesta clara con precio fijo, ahorro estimado y financiamiento disponible. Sin letra chica.',
+    time: 'Mismo día',
     color: '#60B4F7',
   },
   {
     icon: Wrench,
-    title: 'Instalación profesional',
-    description: 'Nuestro equipo certificado instala todo en tu hogar. Nos encargamos de los permisos y la coordinación.',
-    time: '1-2 días',
+    title: 'Instalación completa',
+    description: 'Una vez que das el sí, nuestro equipo instala los paneles, el inversor y gestiona la certificación SEC. Todo incluido.',
+    time: 'Máx. 5-6 días',
     color: '#0A6EBD',
-  },
-  {
-    icon: BadgeCheck,
-    title: 'Certificación SEC',
-    description: 'Gestionamos todos los trámites con la Superintendencia de Electricidad y Combustibles por ti.',
-    time: '2-4 semanas',
-    color: '#22C55E',
   },
   {
     icon: Wallet,
     title: 'Comienza a ahorrar',
-    description: 'Tu sistema queda activo y conectado a la red. Desde el primer mes verás el impacto en tu boleta.',
+    description: 'Tu sistema queda activo y conectado a la red. Desde el primer mes verás el impacto en tu boleta eléctrica.',
     time: 'Para siempre',
-    color: '#FBBF24',
+    color: '#22C55E',
   },
 ]
 
@@ -57,20 +52,20 @@ export function Process() {
       <Container>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 30 }}
+          animate={isInView ? { y: 0 } : {}}
           transition={{ duration: 0.7 }}
           className="text-center mb-10 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-white/8 border border-white/15 text-sm font-semibold text-[#F5A623] mb-4">
             El proceso completo
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
-            De cero a{' '}
+          <RevealText className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
+            {"De cero a "}
             <span className="gradient-text">energía solar</span>
             <br />
-            paso a paso
-          </h2>
+            {"paso a paso"}
+          </RevealText>
           <p className="text-lg text-white/50 max-w-xl mx-auto">
             Transparencia total en cada etapa. Sabes exactamente qué pasa y cuándo.
           </p>
@@ -92,11 +87,9 @@ export function Process() {
                   initial={{ opacity: 0, x: isRight ? 40 : -40 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                  className={`relative flex items-start gap-6 pb-8 md:pb-12 ${
-                    isRight ? 'lg:flex-row-reverse' : 'lg:flex-row'
-                  } flex-row`}
+                  className={`relative flex items-start gap-6 pb-8 md:pb-12 ${isRight ? 'lg:flex-row-reverse' : 'lg:flex-row'} flex-row`}
                 >
-                  {/* Mobile: dot on left line */}
+                  {/* Mobile: icon on left */}
                   <div className="flex-shrink-0 flex flex-col items-center lg:hidden">
                     <div
                       className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl border border-white/10 relative z-10"
@@ -110,10 +103,7 @@ export function Process() {
                   <div className={`hidden lg:flex flex-1 ${isRight ? 'justify-start pl-12' : 'justify-end pr-12'}`}>
                     {!isRight ? (
                       <div className="text-right max-w-xs">
-                        <span
-                          className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3"
-                          style={{ backgroundColor: `${step.color}20`, color: step.color }}
-                        >
+                        <span className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3" style={{ backgroundColor: `${step.color}20`, color: step.color }}>
                           {step.time}
                         </span>
                         <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
@@ -121,10 +111,7 @@ export function Process() {
                       </div>
                     ) : (
                       <div className="text-left max-w-xs">
-                        <span
-                          className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3"
-                          style={{ backgroundColor: `${step.color}20`, color: step.color }}
-                        >
+                        <span className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3" style={{ backgroundColor: `${step.color}20`, color: step.color }}>
                           {step.time}
                         </span>
                         <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
@@ -137,19 +124,11 @@ export function Process() {
                   <div className="hidden lg:flex flex-shrink-0 flex-col items-center">
                     <div
                       className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl relative z-10 -translate-x-px"
-                      style={{
-                        backgroundColor: `${step.color}20`,
-                        border: `2px solid ${step.color}60`,
-                        boxShadow: `0 0 30px ${step.color}20`,
-                      }}
+                      style={{ backgroundColor: `${step.color}20`, border: `2px solid ${step.color}60`, boxShadow: `0 0 30px ${step.color}20` }}
                     >
                       <Icon className="w-7 h-7" style={{ color: step.color }} strokeWidth={1.8} />
                     </div>
-                    {/* Step number */}
-                    <div
-                      className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black text-[#0A1628] mt-2"
-                      style={{ backgroundColor: step.color }}
-                    >
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black text-[#0A1628] mt-2" style={{ backgroundColor: step.color }}>
                       {i + 1}
                     </div>
                   </div>
@@ -159,10 +138,7 @@ export function Process() {
 
                   {/* Mobile content */}
                   <div className="lg:hidden flex-1">
-                    <span
-                      className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-2"
-                      style={{ backgroundColor: `${step.color}20`, color: step.color }}
-                    >
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-2" style={{ backgroundColor: `${step.color}20`, color: step.color }}>
                       {step.time}
                     </span>
                     <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
@@ -172,6 +148,33 @@ export function Process() {
               )
             })}
           </div>
+        </div>
+
+        {/* Installation photo strip */}
+        <div className="grid grid-cols-3 gap-3 md:gap-4 mt-14 md:mt-20">
+          {[
+            { src: '/images/estructura-metalica-2.jpeg', alt: 'Estructura metálica en instalación', label: 'Estructura metálica' },
+            { src: '/images/instalacion-carport-paneles.jpeg', alt: 'Instalación de paneles en carport', label: 'Instalación completa' },
+            { src: '/images/paneles-techo-aerea-1.jpeg', alt: 'Paneles solares instalados, vista aérea', label: 'Sistema funcionando' },
+          ].map((photo, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.7 + i * 0.1 }}
+              className="relative h-36 md:h-52 rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 group"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 33vw, 400px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <span className="absolute bottom-3 left-3 text-xs text-white/75 font-semibold">{photo.label}</span>
+            </motion.div>
+          ))}
         </div>
       </Container>
     </section>
