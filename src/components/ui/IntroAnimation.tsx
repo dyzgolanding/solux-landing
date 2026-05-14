@@ -47,12 +47,14 @@ export function IntroAnimation() {
 
   return (
     <div className="fixed inset-0 z-[100] pointer-events-none" aria-hidden="true">
-      {/* Navy curtain — retracts upward */}
+      {/* Navy curtain — retracts upward via transform (GPU-composited, no layout reflow) */}
       <div
         className="absolute inset-x-0 top-0"
         style={{
-          bottom: curtainUp ? "100%" : "0%",
-          transition: curtainUp ? `bottom ${CURTAIN_DURATION}ms cubic-bezier(0.76, 0, 0.24, 1)` : "none",
+          height: "100vh",
+          transform: curtainUp ? "translateY(-100%)" : "translateY(0)",
+          transition: curtainUp ? `transform ${CURTAIN_DURATION}ms cubic-bezier(0.76, 0, 0.24, 1)` : "none",
+          willChange: "transform",
           background: "#0A1628",
         }}
       />
@@ -66,22 +68,16 @@ export function IntroAnimation() {
             const isOut  = phase === "out"
 
             const opacity    = isIdle ? 0 : isIn ? 1 : 0
-            const blur       = isIdle ? 36 : isIn ? 0 : 24
+            const scale      = isIdle ? 0.7 : isIn ? 1 : 1.15
             const translateY = isIdle ? 48 : isIn ? 0 : -20
 
             const transition = isOut
               ? `opacity ${LETTER_OUT_DUR}ms cubic-bezier(0.4,0,1,1) ${i * LETTER_OUT_STAGGER}ms,
-                 filter  ${LETTER_OUT_DUR}ms cubic-bezier(0.4,0,1,1) ${i * LETTER_OUT_STAGGER}ms,
                  transform ${LETTER_OUT_DUR}ms cubic-bezier(0.4,0,1,1) ${i * LETTER_OUT_STAGGER}ms`
               : isIn
               ? `opacity ${LETTER_IN_DUR}ms cubic-bezier(0.16,1,0.3,1) ${i * LETTER_IN_STAGGER}ms,
-                 filter  ${LETTER_IN_DUR}ms cubic-bezier(0.16,1,0.3,1) ${i * LETTER_IN_STAGGER}ms,
                  transform ${LETTER_IN_DUR}ms cubic-bezier(0.16,1,0.3,1) ${i * LETTER_IN_STAGGER}ms`
               : "none"
-
-            const glowColor = letter.color === "#F5A623"
-              ? "rgba(245,166,35,0.5), 0 0 160px rgba(245,166,35,0.2)"
-              : "rgba(10,110,189,0.5), 0 0 160px rgba(10,110,189,0.2)"
 
             return (
               <span
@@ -92,11 +88,9 @@ export function IntroAnimation() {
                   letterSpacing: "0.05em",
                   color: letter.color,
                   opacity,
-                  filter: `blur(${blur}px)`,
-                  transform: `translateY(${translateY}px)`,
+                  transform: `translateY(${translateY}px) scale(${scale})`,
                   transition,
-                  willChange: "opacity, filter, transform",
-                  textShadow: isIn ? `0 0 80px ${glowColor}` : "none",
+                  willChange: "opacity, transform",
                 }}
               >
                 {letter.char}

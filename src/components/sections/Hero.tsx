@@ -1,8 +1,6 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-// Left column uses CSS animations (globals.css) to show content before JS loads
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
 import { ChevronDown, Shield, Star, Clock } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 
@@ -12,14 +10,6 @@ const SUN_RAYS = [0, 45, 90, 135, 180, 225, 270, 315].map((angle) => ({
   x2: +(430 + Math.cos((angle * Math.PI) / 180) * 55).toFixed(4),
   y2: +(55 + Math.sin((angle * Math.PI) / 180) * 55).toFixed(4),
 }))
-
-const floatVariants = {
-  animate: {
-    y: [0, -18, -9, 0],
-    rotate: [0, 1.5, -1, 0],
-    transition: { duration: 7, repeat: Infinity, ease: 'easeInOut' as const },
-  },
-}
 
 const SolarHouseIllustration = () => (
   <svg viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -72,15 +62,9 @@ const SolarHouseIllustration = () => (
       <line x1="213" y1="95" x2="213" y2="123" stroke="#1A8FE3" strokeWidth="0.8" opacity="0.7" />
     </g>
 
-    {/* Energy flow dots */}
-    <circle cx="260" cy="210" r="4" fill="#F5A623">
-      <animate attributeName="cy" values="210;195;210" dur="2s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite" />
-    </circle>
-    <circle cx="260" cy="230" r="3" fill="#FBBF24" opacity="0.7">
-      <animate attributeName="cy" values="230;215;230" dur="2s" begin="0.3s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="0.7;0;0.7" dur="2s" begin="0.3s" repeatCount="indefinite" />
-    </circle>
+    {/* Energy flow dots — static, no SMIL animations */}
+    <circle cx="260" cy="210" r="4" fill="#F5A623" opacity="0.8" />
+    <circle cx="260" cy="230" r="3" fill="#FBBF24" opacity="0.5" />
 
     {/* Sun in corner */}
     <circle cx="430" cy="55" r="35" fill="url(#sunGrad)" opacity="0.9" />
@@ -163,19 +147,12 @@ const SolarHouseIllustration = () => (
 )
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  })
-  const illustrationY = useTransform(scrollYProgress, [0, 1], [0, -80])
-
   return (
-    <section ref={sectionRef} className="relative min-h-screen hero-mesh flex flex-col overflow-hidden">
-      {/* Ambient glow orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#F5A623]/8 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#0A6EBD]/12 blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#1A8FE3]/5 blur-[150px] pointer-events-none" />
+    <section className="relative min-h-screen hero-mesh flex flex-col overflow-hidden">
+      {/* Ambient glow orbs — hidden on mobile to avoid GPU memory pressure */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#F5A623]/8 blur-[120px] pointer-events-none hidden sm:block" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#0A6EBD]/12 blur-[100px] pointer-events-none hidden sm:block" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#1A8FE3]/5 blur-[150px] pointer-events-none hidden sm:block" />
 
       {/* Grid pattern overlay */}
       <div
@@ -258,50 +235,13 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9, x: 40 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            style={{ y: illustrationY }}
             className="relative flex items-center justify-center"
           >
-            <motion.div
-              variants={floatVariants}
-              animate="animate"
-              className="relative w-full max-w-lg lg:max-w-full"
-            >
+            <div className="relative w-full max-w-lg lg:max-w-full">
               {/* Glow behind illustration */}
-              <div className="absolute inset-0 rounded-full bg-[#0A6EBD]/20 blur-[80px] scale-75" />
+              <div className="absolute inset-0 rounded-full bg-[#0A6EBD]/20 blur-[80px] scale-75 hidden sm:block" />
               <SolarHouseIllustration />
-            </motion.div>
-
-            {/* Floating particle dots */}
-            {[
-              { size: 6, top: '15%', left: '8%', color: '#F5A623', delay: 0 },
-              { size: 4, top: '70%', left: '5%', color: '#60B4F7', delay: 1.5 },
-              { size: 8, top: '30%', right: '5%', color: '#22C55E', delay: 0.8 },
-              { size: 5, bottom: '20%', right: '10%', color: '#F5A623', delay: 2 },
-            ].map((dot, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full"
-                style={{
-                  width: dot.size,
-                  height: dot.size,
-                  backgroundColor: dot.color,
-                  top: dot.top,
-                  left: dot.left,
-                  right: (dot as { right?: string }).right,
-                  bottom: (dot as { bottom?: string }).bottom,
-                }}
-                animate={{
-                  y: [0, -15, 0],
-                  opacity: [0.6, 1, 0.6],
-                }}
-                transition={{
-                  duration: 3 + i,
-                  delay: dot.delay,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-            ))}
+            </div>
           </motion.div>
         </div>
 
@@ -313,12 +253,7 @@ export function Hero() {
           className="flex flex-col items-center gap-2 pb-4"
         >
           <span className="text-xs text-white/30 tracking-widest uppercase">Descubre más</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <ChevronDown className="w-5 h-5 text-white/30" />
-          </motion.div>
+          <ChevronDown className="w-5 h-5 text-white/30" />
         </motion.div>
       </Container>
     </section>
