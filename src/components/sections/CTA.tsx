@@ -9,7 +9,7 @@ import { RevealText } from '@/components/ui/RevealText'
 
 export function CTA() {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, amount: 0.05 })
 
   return (
     <section ref={ref} className="py-14 sm:py-24 relative overflow-hidden bg-[#0A1628]">

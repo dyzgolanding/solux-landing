@@ -40,7 +40,7 @@ const photos = [
 
 export function PhotoGallery() {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, amount: 0.05 })
 
   return (
     <section ref={ref} className="py-16 md:py-24 bg-white overflow-hidden">

@@ -65,7 +65,7 @@ function StarRating({ rating }: { rating: number }) {
 
 export function Testimonials() {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, amount: 0.05 })
   const [active, setActive] = useState(0)
 
   const prev = () => setActive((a) => (a === 0 ? testimonials.length - 1 : a - 1))

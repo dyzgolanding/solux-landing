@@ -40,7 +40,7 @@ const steps = [
 
 export function Process() {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, amount: 0.05 })
 
   return (
     <section id="proceso" ref={ref} className="py-16 md:py-24 bg-[#0A1628] overflow-hidden relative">

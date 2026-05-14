@@ -75,7 +75,7 @@ const TRACK_UNIT = cards.length * (CARD_W + GAP)
 
 export function ScrollCarousel() {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-60px' })
+  const isInView = useInView(ref, { once: true, amount: 0.05 })
 
   return (
     <section ref={ref} className="relative bg-[#0A1628] py-16 md:py-24 overflow-hidden">

@@ -13,7 +13,7 @@ interface Props {
 
 export function AnimatedHeading({ text, className = '', delay = 0, as: Tag = 'h2' }: Props) {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-60px' })
+  const isInView = useInView(ref, { once: true, amount: 0.05 })
 
   const words = text.split(' ')
 

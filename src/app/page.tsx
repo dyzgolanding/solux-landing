@@ -1,18 +1,16 @@
-import dynamic from 'next/dynamic'
 import { Navbar } from '@/components/sections/Navbar'
 import { Hero } from '@/components/sections/Hero'
 import { Stats } from '@/components/sections/Stats'
 import { IntroAnimation } from '@/components/ui/IntroAnimation'
-
-const ScrollCarousel = dynamic(() => import('@/components/sections/ScrollCarousel').then(m => ({ default: m.ScrollCarousel })))
-const HowItWorks    = dynamic(() => import('@/components/sections/HowItWorks').then(m => ({ default: m.HowItWorks })))
-const Benefits      = dynamic(() => import('@/components/sections/Benefits').then(m => ({ default: m.Benefits })))
-const PhotoGallery  = dynamic(() => import('@/components/sections/PhotoGallery').then(m => ({ default: m.PhotoGallery })))
-const Process       = dynamic(() => import('@/components/sections/Process').then(m => ({ default: m.Process })))
-const Testimonials  = dynamic(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })))
-const FAQ           = dynamic(() => import('@/components/sections/FAQ').then(m => ({ default: m.FAQ })))
-const CTA           = dynamic(() => import('@/components/sections/CTA').then(m => ({ default: m.CTA })))
-const Footer        = dynamic(() => import('@/components/sections/Footer').then(m => ({ default: m.Footer })))
+import { ScrollCarousel } from '@/components/sections/ScrollCarousel'
+import { HowItWorks } from '@/components/sections/HowItWorks'
+import { Benefits } from '@/components/sections/Benefits'
+import { PhotoGallery } from '@/components/sections/PhotoGallery'
+import { Process } from '@/components/sections/Process'
+import { Testimonials } from '@/components/sections/Testimonials'
+import { FAQ } from '@/components/sections/FAQ'
+import { CTA } from '@/components/sections/CTA'
+import { Footer } from '@/components/sections/Footer'
 
 export default function Home() {
   return (

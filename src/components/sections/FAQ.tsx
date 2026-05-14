@@ -117,7 +117,7 @@ function FAQItem({
 
 export function FAQ() {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, amount: 0.05 })
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
