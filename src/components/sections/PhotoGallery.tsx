@@ -9,12 +9,12 @@ const photos = [
   {
     src: '/images/paneles-casa-ladera-aerea-1.jpeg',
     alt: 'Casa moderna con instalación solar, vista aérea',
-    label: 'Las Condes, Santiago',
+    label: 'Chicureo, Santiago',
   },
   {
     src: '/images/paneles-techo-montana-panorama.jpeg',
     alt: 'Paneles solares con vista panorámica',
-    label: 'Lo Barnechea',
+    label: 'La Reina',
   },
   {
     src: '/images/paneles-casa-montana-vista.jpeg',
@@ -34,7 +34,7 @@ const photos = [
   {
     src: '/images/casa-montana-frontal.jpeg',
     alt: 'Vista frontal de casa con instalación solar completa',
-    label: 'La Dehesa',
+    label: 'Proceso de instalación',
   },
 ]
 

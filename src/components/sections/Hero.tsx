@@ -217,7 +217,7 @@ export function Hero() {
             <div className="animate-hero-5 flex flex-wrap items-center gap-6 pt-2">
               <div className="flex items-center gap-2 text-sm text-white/50">
                 <Shield className="w-4 h-4 text-[#22C55E]" />
-                Garantía 25 años
+                Garantía 1 año equipos
               </div>
               <div className="flex items-center gap-2 text-sm text-white/50">
                 <Star className="w-4 h-4 text-[#F5A623]" />

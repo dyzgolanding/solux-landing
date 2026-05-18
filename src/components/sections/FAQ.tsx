@@ -40,7 +40,7 @@ const faqs = [
   {
     question: '¿Qué garantías incluye el sistema?',
     answer:
-      'Los paneles tienen garantía de rendimiento de 25 años (mínimo 80% de eficiencia) y garantía de producto de 12 años. Los inversores tienen garantía de 5-10 años. SOLUX te da además garantía de instalación de 5 años.',
+      'Los equipos instalados tienen garantía de 1 año. Además, el primer año incluye mantención y soporte técnico sin costo: si algo falla o necesitas asistencia, nuestro equipo responde sin cobro adicional. Para cualquier consulta técnica, contáctanos directamente.',
   },
   {
     question: '¿Funciona en departamentos?',

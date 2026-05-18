@@ -2,25 +2,25 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { DollarSign, Shield, Zap, BarChart3, Clock, Leaf } from 'lucide-react'
+import { UserCheck, Shield, Zap, Building2, Clock, Leaf } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { TiltCard } from '@/components/ui/TiltCard'
 import { RevealText } from '@/components/ui/RevealText'
 
 const benefits = [
   {
-    icon: DollarSign,
-    title: 'Sin inversión inicial',
-    description: 'Accede a financiamiento con cuotas que en muchos casos son menores al ahorro mensual en tu cuenta de luz.',
+    icon: UserCheck,
+    title: 'Visita técnica gratuita',
+    description: 'Un asesor visita tu hogar sin costo para evaluar tu techo y entregarte un presupuesto exacto a medida. Sin compromiso, sin letra chica.',
     color: '#22C55E',
-    tag: 'Financiamiento disponible',
+    tag: 'Sin compromiso',
   },
   {
     icon: Shield,
-    title: 'Garantía total 25 años',
-    description: 'Paneles con garantía de 25 años de rendimiento y 12 años en equipos. Tu inversión protegida por décadas.',
+    title: 'Garantía y soporte 1 año',
+    description: '1 año de garantía en equipos instalados y mantención técnica sin costo incluida. Tu instalación respaldada desde el primer día.',
     color: '#0A6EBD',
-    tag: 'Máxima protección',
+    tag: 'Respaldo total',
   },
   {
     icon: Zap,
@@ -30,11 +30,11 @@ const benefits = [
     tag: 'Top mundial',
   },
   {
-    icon: BarChart3,
-    title: 'Monitoreo en tiempo real',
-    description: 'Sigue tu producción de energía, consumo y ahorro desde tu celular. Acceso 24/7 a tus datos solares.',
+    icon: Building2,
+    title: 'Trayectoria en proyectos exigentes',
+    description: 'Venimos del sector industrial: empresas, minería y bodegas. Esa experiencia técnica y de rigor la aplicamos en cada hogar.',
     color: '#60B4F7',
-    tag: 'App incluida',
+    tag: 'Experiencia comprobada',
   },
   {
     icon: Clock,

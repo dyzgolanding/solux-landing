@@ -5,8 +5,8 @@ import { motion, useInView } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 
 const stats = [
-  { value: 5, suffix: ' años', label: 'De experiencia', color: '#F5A623', description: 'En el mercado solar chileno' },
-  { value: 10, suffix: '+', label: 'Hogares instalados', color: '#22C55E', description: 'Clientes satisfechos' },
+  { value: 2, suffix: ' años', label: 'En sector residencial', color: '#F5A623', description: 'Antes en industrial y minería' },
+  { value: 17, suffix: '', label: 'Hogares instalados', color: '#22C55E', description: 'Clientes satisfechos' },
   { value: 100, suffix: '%', label: 'Trámites SEC', color: '#60B4F7', description: 'Gestionados por nosotros' },
   { value: 6, suffix: ' días', label: 'Instalación completa', color: '#FBBF24', description: 'Desde que das el sí' },
 ]
@@ -90,7 +90,7 @@ export function Stats() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center text-xs text-[#94A3B8] mt-8"
         >
-          * Garantías según fabricantes líderes con los que trabajamos. Ahorro estimado según consumo promedio del hogar.
+          * 2 años de experiencia en sector residencial. Experiencia previa en proyectos industriales, minería y bodegas. Ahorro estimado según consumo promedio del hogar.
         </motion.p>
       </Container>
     </section>

@@ -96,8 +96,8 @@ export function CTA() {
             className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-8 sm:mt-10 text-xs sm:text-sm text-white/40"
           >
             {[
-              '✓ Sin inversión inicial',
-              '✓ Garantía 25 años',
+              '✓ Trámites SEC incluidos',
+              '✓ Garantía 1 año equipos',
               '✓ Certificación SEC incluida',
               '✓ Sin letra chica',
             ].map((item) => (

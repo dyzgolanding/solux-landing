@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { DollarSign, Shield, Zap, BarChart3, Leaf, Clock } from 'lucide-react'
+import { DollarSign, UserCheck, Shield, Zap, Building2, Leaf, Clock } from 'lucide-react'
 import { RevealText } from '@/components/ui/RevealText'
 
 const cards = [
@@ -18,33 +18,33 @@ const cards = [
   },
   {
     number: '02',
-    tag: 'Sin inversión inicial',
-    title: 'Cuotas que se pagan con el ahorro de tu boleta',
-    description: 'Accede a financiamiento con cuotas que en muchos casos son menores al ahorro mensual.',
+    tag: 'Sin compromiso',
+    title: 'Visita técnica gratuita y presupuesto exacto a medida',
+    description: 'Un asesor visita tu hogar sin costo, evalúa tu techo y te entrega un presupuesto exacto. Sin presión ni letra chica.',
     stat: '$0',
-    statLabel: 'inversión inicial requerida',
+    statLabel: 'costo de la visita técnica',
     color: '#22C55E',
-    Icon: Zap,
+    Icon: UserCheck,
   },
   {
     number: '03',
-    tag: 'Garantía total',
-    title: '25 años de garantía de rendimiento en tus paneles',
-    description: 'Trabajamos con fabricantes líderes mundiales. 25 años de rendimiento garantizado.',
-    stat: '25 años',
-    statLabel: 'de garantía incluida',
+    tag: 'Respaldo garantizado',
+    title: '1 año de garantía en equipos y mantención sin costo',
+    description: 'Equipos instalados con 1 año de garantía y soporte técnico incluido. Sin costos adicionales de mantención durante el primer año.',
+    stat: '1 año',
+    statLabel: 'garantía + mantención incluida',
     color: '#0A6EBD',
     Icon: Shield,
   },
   {
     number: '04',
-    tag: 'Monitoreo 24/7',
-    title: 'Controla tu energía solar desde el celular',
-    description: 'App incluida para ver en tiempo real cuánta energía produce tu techo y cuánto ahorras.',
-    stat: '24/7',
-    statLabel: 'monitoreo en tiempo real',
+    tag: 'Experiencia comprobada',
+    title: 'Trayectoria en proyectos industriales aplicada a tu hogar',
+    description: 'Venimos del sector industrial: empresas, minería y bodegas. Ese rigor técnico lo aplicamos en cada instalación residencial.',
+    stat: '2+ años',
+    statLabel: 'en sector residencial',
     color: '#60B4F7',
-    Icon: BarChart3,
+    Icon: Building2,
   },
   {
     number: '05',
