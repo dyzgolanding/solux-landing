@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import './globals.css'
 import { ScrollProgress } from '@/components/ui/ScrollProgress'
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 
 const geist = Geist({
   variable: '--font-geist-sans',
@@ -45,6 +46,7 @@ export default function RootLayout({
       <body className="bg-white text-slate-900 antialiased overflow-x-hidden">
         <ScrollProgress />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   )
