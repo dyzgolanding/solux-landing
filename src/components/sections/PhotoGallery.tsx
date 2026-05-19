@@ -12,8 +12,8 @@ const photos = [
     label: 'Chicureo, Santiago',
   },
   {
-    src: '/images/paneles-techo-montana-panorama.jpeg',
-    alt: 'Paneles solares con vista panorámica',
+    src: '/images/paneles-techo-tejas-atardecer.jpeg',
+    alt: 'Paneles solares sobre tejas al atardecer',
     label: 'La Reina',
   },
   {
@@ -32,8 +32,8 @@ const photos = [
     label: 'Equipo técnico certificado',
   },
   {
-    src: '/images/casa-montana-frontal.jpeg',
-    alt: 'Vista frontal de casa con instalación solar completa',
+    src: '/images/paneles-techo-tejas-primer-plano.jpeg',
+    alt: 'Paneles solares sobre tejas, primer plano',
     label: 'Proceso de instalación',
   },
 ]

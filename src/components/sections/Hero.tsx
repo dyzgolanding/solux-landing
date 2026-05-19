@@ -27,9 +27,13 @@ const SolarSystemSchematic = () => {
           <stop offset="0%"   stopColor="#E8EFF8"/>
           <stop offset="100%" stopColor="#DDE6F2"/>
         </linearGradient>
-        {/* Clip panels to roof right slope */}
+        {/* Full roof clip (for glow) */}
         <clipPath id="roofClip">
           <path d="M 45 154 L 252 36 L 460 154 Z"/>
+        </clipPath>
+        {/* Horizontal clip — panels stop cleanly at the eave, no diagonal cut */}
+        <clipPath id="eaveClip">
+          <rect x="0" y="0" width="500" height="154"/>
         </clipPath>
         {/* Orange arrowhead marker */}
         <marker id="arrO" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
@@ -60,25 +64,33 @@ const SolarSystemSchematic = () => {
       {/* Eave lip */}
       <rect x="45" y="152" width="415" height="8" rx="1" fill="#AA1A1A"/>
 
-      {/* ═══════════ SOLAR PANELS (clipped to right slope) ═══════════ */}
-      {/* Glow behind panels */}
+      {/* ═══════════ SOLAR PANELS ═══════════ */}
+      {/* Strategy: rotate(29.5°) = exact slope angle.
+          Center cy=110 is 7px BELOW the slope at cx=370 (slope_y=103),
+          so the entire top edge lands safely inside the roof triangle.
+          eaveClip cuts the bottom cleanly at y=154 — no diagonal clip ever. */}
       <g clipPath="url(#roofClip)">
-        <ellipse cx="362" cy="100" rx="95" ry="55" fill="#F5A623" opacity="0.08" transform="rotate(28,362,100)"/>
+        <ellipse cx="370" cy="110" rx="88" ry="38" fill="#F5A623" opacity="0.09"
+          transform="rotate(29.5, 370, 110)"/>
       </g>
-      {/* Panel array — rotate to match slope angle ~28° */}
-      <g clipPath="url(#roofClip)" transform="rotate(28, 360, 100)">
+      <g clipPath="url(#eaveClip)" transform="rotate(29.5, 370, 110)">
         {([0, 1] as const).map(row =>
           ([0, 1, 2] as const).map(col => (
             <g key={`${row}${col}`}>
-              <rect x={288 + col * 54} y={68 + row * 34} width="50" height="30" rx="2" fill="url(#pFill)" stroke="#60B4F7" strokeWidth="1.3"/>
-              <line x1={288+col*54}    y1={68+row*34+10} x2={338+col*54} y2={68+row*34+10} stroke="#1A70CC" strokeWidth="0.8" opacity="0.7"/>
-              <line x1={288+col*54}    y1={68+row*34+20} x2={338+col*54} y2={68+row*34+20} stroke="#1A70CC" strokeWidth="0.8" opacity="0.7"/>
-              <line x1={288+col*54+17} y1={68+row*34}    x2={288+col*54+17} y2={98+row*34} stroke="#1A70CC" strokeWidth="0.8" opacity="0.7"/>
-              <line x1={288+col*54+34} y1={68+row*34}    x2={288+col*54+34} y2={98+row*34} stroke="#1A70CC" strokeWidth="0.8" opacity="0.7"/>
+              <rect
+                x={306 + col * 44} y={110 + row * 30}
+                width="40" height="26" rx="2"
+                fill="url(#pFill)" stroke="#60B4F7" strokeWidth="1.2"/>
+              <line x1={306+col*44}    y1={110+row*30+8}  x2={346+col*44} y2={110+row*30+8}  stroke="#1A70CC" strokeWidth="0.8" opacity="0.7"/>
+              <line x1={306+col*44}    y1={110+row*30+17} x2={346+col*44} y2={110+row*30+17} stroke="#1A70CC" strokeWidth="0.8" opacity="0.7"/>
+              <line x1={306+col*44+13} y1={110+row*30}    x2={306+col*44+13} y2={136+row*30} stroke="#1A70CC" strokeWidth="0.8" opacity="0.7"/>
+              <line x1={306+col*44+27} y1={110+row*30}    x2={306+col*44+27} y2={136+row*30} stroke="#1A70CC" strokeWidth="0.8" opacity="0.7"/>
             </g>
           ))
         )}
       </g>
+      {/* Redraw left-slope fill OVER panels to hide any tiny overflow left of peak */}
+      <path d="M 45 156 L 252 36 L 252 156 Z" fill="url(#roofG)"/>
 
       {/* ═══════════ SUN ═══════════ */}
       {/* Outer pulse glow */}
